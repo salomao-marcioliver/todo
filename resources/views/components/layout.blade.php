@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{$page ?? 'Todo'}}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <img src="/assets/images/logo.png">
+        </div>
+        <div class="content">
+            <nav>
+                {{$btn ?? null}}
+            </nav>
+            <main>
+                {{$slot}}
+            </main>
+        </div>
+    </div>
+    <script>
+        // Obter dados do controlador (substitua com seus dados)
+        var data = {
+            labels: ["Concluído", "A Fazer"],
+            datasets: [{
+                data: [75, 25], // Substitua com suas porcentagens
+                backgroundColor: ["#ef3b2d", "#fea29b"]
+            }]
+        };
+
+        // Configurar o gráfico
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'doughnut', // Pode usar outros tipos de gráficos
+            data: data
+        });
+    </script>
+</body>
+
+</html>
